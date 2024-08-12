@@ -1,0 +1,32 @@
+<head xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" href="/src/main/resources/static/estilos/cartaError.css ">
+    <link rel="stylesheet" href="/src/main/resources/static/error.css">
+    <link th:rel="stylesheet" th:href=" @{error.css}">
+</head>
+
+<div class="contenedorCartas">
+    <div th:if="${error != null}" class="cartaErrorContenedor">
+        <div class="contairnerTError">
+            <div class="contenedorError">
+                <img src="/src/main/resources/static/advertencia.png" th:src="@{advertencia.png}" alt=""
+                     class="imagenError">
+            </div>
+
+            <div class="card-body">
+
+                <h5 class="card-title" th:text="${error}"> ¡Error en la MATRIX! </h5>
+
+            </div>
+        </div>
+
+    </div>
+    <div th:if="${exito != null}" class="cartaExitoContenedor">
+        <div class="contenedorExito">
+            <img src="/src/main/resources/static/comprobado.png" th:src="@{comprobado.png}" alt="" class="imagenExito">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"> Exito! </h5>
+            <p class="card-text" th:text="${exito}"></p>
+        </div>
+    </div>
+</div>

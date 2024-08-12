@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/main/resources/static/listadoEstilo.css">
+    <link rel="stylesheet" th:href=  "@{listadoEstilo.css}">
+    <link th:rel="stylesheet" th:href=" @{error.css}">
+    <title>Document</title>
+</head>
+<body>
+<div th:replace="fragments/error :: div"></div>
+<div class="tablaContainer">
+    
+    <div class="tituloListado">
+        <div class="containerFlecha">
+         <a th:href="@{/}">   <img src="/src/main/resources/static/flecha.png"  th:src= "@{flecha.png}" alt="" class="opcAtras"></a>
+        </div>
+        
+        <h1>LISTADO DE PERSONAS</h1>
+    </div>
+    
+    <div class="tablaPersona">
+        <table    >
+ <thead >
+    <tr >
+        <td class="titleRows">NOMBRE</td>
+        <td class="titleRows">APELLIDO</td>
+        <td class="titleRows">EMAIL</td>
+        <td class="titleRows">SEXO</td>
+        <td class="titleRows">DOMICILIO</td>
+        <td class="titleRows">DISTRITO</td>
+        <td class="titleRows">ELIMINAR</td>
+    </tr>
+    <tr th:each="persona : ${persona}">
+        <td  th:text="${persona.nombre}"></td>
+        <td  th:text="${persona.apellido}"></td>
+        <td  th:text="${persona.email}" ></td>
+        <td  th:text="${persona.sexo}"></td>
+        <td  th:text="${persona.domicilio}"> </td>
+        <td  th:text="${persona.distritos.displayName}"> </td>
+        <td class="eliminarTd" >
+            <form th:action="@{'/eliminarPersona/' + ${persona.id}}" method="POST">
+                <button type="submit" class="botonBorrar"  onclick="return confirm('¿Estás seguro de que deseas eliminar esta persona?')">
+            <img src="/src/main/resources/static/lecho.png"  th:src= "@{lecho.png}" alt="" class="imgBs">
+        </button>
+            </form>
+        </td>
+    </tr>
+   
+ </thead>     
+     
+        
+
+
+
+        </table>
+
+
+
+
+    </div>
+</div>
+    
+</body>
+</html>
